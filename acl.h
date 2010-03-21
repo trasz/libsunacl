@@ -30,7 +30,10 @@
 
 #include <sys/types.h> /* uid_t */
 
-#define	MAX_ACL_ENTRIES		(1024)	/* max entries of each type */
+/*
+ * ACL_MAX_ENTRIES from <sys/acl.h>
+ */
+#define	MAX_ACL_ENTRIES		254
 
 typedef struct acl_entry	aclent_t;
 #define	a_type	ae_tag
