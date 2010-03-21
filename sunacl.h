@@ -26,8 +26,8 @@
  * $FreeBSD$
  */
 
-#ifndef _OPENSOLARIS_SYS_ACL_H_
-#define	_OPENSOLARIS_SYS_ACL_H_
+#ifndef SUNACL_H
+#define	SUNACL_H
 
 #include <sys/types.h> /* uid_t */
 
@@ -110,4 +110,4 @@ typedef struct ace {
 int acl(const char *path, int cmd, int cnt, void *buf);
 int facl(int fd, int cmd, int cnt, void *buf);
 
-#endif /* _OPENSOLARIS_SYS_ACL_H */
+#endif /* SUNACL_H */

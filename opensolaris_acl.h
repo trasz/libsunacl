@@ -26,8 +26,8 @@
  * $FreeBSD$
  */
 
-#ifndef OPENSOLARIS_SYS_ACL_H
-#define OPENSOLARIS_SYS_ACL_H
+#ifndef OPENSOLARIS_ACL_H
+#define OPENSOLARIS_ACL_H
 
 #include <sys/acl.h>
 
@@ -36,4 +36,4 @@ struct acl;
 int aces_from_acl(ace_t *aces, int *nentries, const struct acl *aclp);
 int acl_from_aces(struct acl *aclp, const ace_t *aces, int nentries);
 
-#endif /* OPENSOLARIS_SYS_ACL_H */
+#endif /* OPENSOLARIS_ACL_H */
