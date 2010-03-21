@@ -28,7 +28,7 @@
 #include <err.h>
 #include <sys/acl.h>
 
-#include "acl.h"
+#include "sunacl.h"
 #include "opensolaris_acl.h"
 
 static int

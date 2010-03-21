@@ -35,7 +35,7 @@ __FBSDID("$FreeBSD$");
 #include <err.h>
 #include <strings.h>
 
-#include "acl.h"
+#include "sunacl.h"
 
 #define printf		warnx
 #define KASSERT(a, str)	do { if (!a) { warnx(str); return (EIO); } } while (0)
