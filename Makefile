@@ -1,8 +1,13 @@
-all: libsunacl.so.0
+# $FreeBSD$
 
-libsunacl.so.0: libsunacl.c sunacl.h opensolaris_acl.c opensolaris_acl.h
-	$(CC) $(CFLAGS) -Wall -pedantic -o libsunacl.so.0 -shared libsunacl.c opensolaris_acl.c -D_ACL_PRIVATE -fPIC
+LIB=	sunacl
+PREFIX=/usr/local
+LIBDIR?=	${PREFIX}/lib
+INCLUDEDIR?=	${PREFIX}/include
+SHLIB_MAJOR=	1
+SRCS=	libsunacl.c opensolaris_acl.c
+INCS=	sunacl.h
 
-clean:
-	rm -f libsunacl.so.0
+CFLAGS+=-D_ACL_PRIVATE
 
+.include <bsd.lib.mk>
