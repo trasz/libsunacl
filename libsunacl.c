@@ -69,7 +69,7 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 		else
 			error = acl_set_fd_np(fd, aclp, ACL_TYPE_NFS4);
 		if (error) {
-			if (errno == EOPNOTSUPP)
+			if (errno == EOPNOTSUPP || errno == EINVAL)
 				errno = ENOSYS;
 			return (-1);
 		}
@@ -87,7 +87,7 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 		else
 			aclp = acl_get_fd_np(fd, ACL_TYPE_NFS4);
 		if (aclp == NULL) {
-			if (errno == EOPNOTSUPP)
+			if (errno == EOPNOTSUPP || errno == EINVAL)
 				errno = ENOSYS;
 			return (-1);
 		}
@@ -112,7 +112,7 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 		else
 			aclp = acl_get_fd_np(fd, ACL_TYPE_NFS4);
 		if (aclp == NULL) {
-			if (errno == EOPNOTSUPP)
+			if (errno == EOPNOTSUPP || errno == EINVAL)
 				errno = ENOSYS;
 			return (-1);
 		}
