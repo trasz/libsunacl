@@ -38,7 +38,7 @@ __FBSDID("$FreeBSD$");
 #include "acl.h"
 
 #define printf		warnx
-#define KASSERT(a, str)	do { if (!a) warnx(str); return (EIO); } while (0)
+#define KASSERT(a, str)	do { if (!a) { warnx(str); return (EIO); } } while (0)
 #define panic(fmt, arg)	do { warnx(fmt, arg); return (EIO); } while (0)
 
 struct zfs2bsd {
