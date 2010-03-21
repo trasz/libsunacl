@@ -58,6 +58,12 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 			return (-1);
 		}
 
+		/*
+		 * Ugly hack to make sure we don't trip sanity check at
+		 * lib/libc/posix1e/acl_branding.c:_acl_type_not_valid_for_acl().
+		 */
+		aclp->ats_brand = ACL_BRAND_NFS4;
+
 		if (path != NULL)
 			error = acl_set_file(path, ACL_TYPE_NFS4, aclp);
 		else
