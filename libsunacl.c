@@ -53,6 +53,7 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 
 		error = acl_from_aces(&(aclp->ats_acl), buf, cnt);
 		if (error) {
+			acl_free(aclp);
 			warnx("aces_from_acl failed");
 			errno = EIO;
 			return (-1);
@@ -71,9 +72,11 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 		if (error) {
 			if (errno == EOPNOTSUPP || errno == EINVAL)
 				errno = ENOSYS;
+			acl_free(aclp);
 			return (-1);
 		}
 
+		acl_free(aclp);
 		return (0);
 
 	case ACE_GETACL:
@@ -93,11 +96,13 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 		}
 
 		if (aclp->ats_acl.acl_cnt > cnt) {
+			acl_free(aclp);
 			errno = ENOSPC;
 			return (-1);
 		}
 
 		error = aces_from_acl(buf, &nentries, &(aclp->ats_acl));
+		acl_free(aclp);
 		if (error) {
 			warnx("aces_from_acl failed");
 			errno = EIO;
@@ -118,6 +123,7 @@ xacl(const char *path, int fd, int cmd, int cnt, void *buf)
 		}
 
 		nentries = aclp->ats_acl.acl_cnt;
+		acl_free(aclp);
 		return (nentries);
 
 	default:
