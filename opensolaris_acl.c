@@ -74,6 +74,8 @@ struct zfs2bsd flags[] = {{ACE_FILE_INHERIT_ACE,
 			    ACL_ENTRY_SUCCESSFUL_ACCESS},
 			{ACE_FAILED_ACCESS_ACE_FLAG,
 			    ACL_ENTRY_FAILED_ACCESS},
+			{ACE_INHERITED_ACE,
+			    ACL_ENTRY_INHERITED},
 			{0, 0}};
 
 static int
